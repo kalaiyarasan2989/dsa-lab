@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+// Structure for queue node
+struct node
+{
+int data;
+struct node *next;
+};
+struct node *front = NULL;
+struct node *rear = NULL;
+// Enqueue operation
+void enqueue()
+{
+int item;
+struct node *newNode;
+newNode = (struct node *)malloc(sizeof(struct node));
+if (newNode == NULL)
+{
+printf("Heap Overflow!\n");
+return;
+}
+printf("Enter element to insert: ");
+scanf("%d", &item);
+newNode->data = item;
+newNode->next = NULL;
+if (rear == NULL)
+{
+front = rear = newNode;
+}
+else
+{
+rear->next = newNode;
+rear = newNode;
+}
+printf("Element inserted successfully.\n");
+}
+// Dequeue operation
+void dequeue()
+{
+struct node *temp;
+if (front == NULL)
+{
+printf("Queue Underflow!\n");
+return;
+}
+temp = front;
+printf("Deleted element: %d\n", temp->data);
+…
